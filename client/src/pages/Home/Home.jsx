@@ -1,14 +1,22 @@
-import Categories from "../../components/Rooms/Categories/Categories"
-import Rooms from "../../components/Rooms/Rooms"
+// import { useSearchParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import Categories from "../../components/Categories/Categories";
+import Rooms from "../../components/Rooms/Rooms";
 
 const Home = () => {
+  // const [params, setParams] = useSearchParams();
+  // const category = params.get('category')
+  // console.log(category);
+
   return (
     <div>
-      <h1>Welcome to StayVista </h1>
+      <Helmet>
+        <title>StayVista | Vacation Homes & Condo Rentals</title>
+      </Helmet>
       <Categories></Categories>
       <Rooms></Rooms>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
