@@ -33,6 +33,7 @@ const RoomDetails = () => {
       <div>
         <div className="flex flex-col gap-6">
           {/* <Header room={room}></Header> */}
+          <Header room={room}></Header>
         </div>
         <div className="">
           {/* TODO: room info */}
