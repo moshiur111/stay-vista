@@ -42,8 +42,12 @@ const client = new MongoClient(process.env.DB_URI, {
     deprecationErrors: true,
   },
 })
+
 async function run() {
   try {
+
+     const usersCollection = client.db('stayVistaDB').collection('users')
+
     // auth related api
     app.post('/jwt', async (req, res) => {
       const user = req.body
