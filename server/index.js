@@ -103,17 +103,40 @@ async function run() {
       res.send(result);
     });
 
+    // Get user role
+    app.get("/user/:email", async (req, res) => {
+      const email = req.params.email;
+      const result = await usersCollection.findOne({ email });
+      res.send(result);
+    });
+
     // Get all rooms
     app.get("/rooms", async (req, res) => {
       const result = await roomsCollection.find().toArray();
       res.send(result);
     });
 
+    // Get rooms for host
+    app.get("/rooms/:email", async (req, res) => {
+      const email = req.params.email;
+      const result = await roomsCollection
+        .find({ "host.email": email })
+        .toArray();
+      res.send(result);
+    });
+
     // Get single room data
     app.get("/room/:id", async (req, res) => {
       const id = req.params.id;
-      const result = await roomsCollection.findOne({_id: new ObjectId(id)})
-      res.send(result)
+      const result = await roomsCollection.findOne({ _id: new ObjectId(id) });
+      res.send(result);
+    });
+
+    // Save a room in database
+    app.post("/rooms", verifyToken, async (req, res) => {
+      const room = req.body;
+      const result = await roomsCollection.insertOne(room);
+      res.send(result);
     });
 
     // Send a ping to confirm a successful connection
