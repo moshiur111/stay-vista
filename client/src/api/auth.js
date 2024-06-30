@@ -8,7 +8,6 @@ export const saveUser = async (user) => {
     status: "Verified",
   };
   const { data } = await axiosSecure.put(`/users/${user?.email}`, currentUser);
-
   return data;
 };
 

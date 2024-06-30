@@ -4,31 +4,29 @@ import Container from "../Shared/Container";
 import { useSearchParams } from "react-router-dom";
 import Heading from "../Shared/Heading";
 import Loader from "../Shared/Loader";
+import { getAllRooms } from "../../api/rooms";
 
 const Rooms = () => {
   const [rooms, setRooms] = useState([]);
   const [params, setParams] = useSearchParams();
   const [loading, setLoading] = useState(false);
   const category = params.get("category");
-  console.log(category);
 
   useEffect(() => {
-    setLoading(true);
-    fetch("./rooms.json")
-      .then((res) => res.json())
-      .then((data) => {
-        if (category) {
-          const filtered = data.filter((room) => room.category === category);
-          setRooms(filtered);
-        } else {
-          setRooms(data);
-        }
-        setLoading(false);
-      });
+    setLoading(true)
+    getAllRooms().then((data) => {
+      if (category) {
+        const filtered = data.filter((room) => room.category === category);
+        setRooms(filtered);
+      } else {
+        setRooms(data);
+      }
+      setLoading(false);
+    });
   }, [category]);
 
-  if(loading) {
-    return <Loader></Loader>
+  if (loading) {
+    return <Loader></Loader>;
   }
 
   return (
