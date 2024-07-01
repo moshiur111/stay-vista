@@ -19,8 +19,6 @@ const Sidebar = () => {
   const [toggle, setToggle] = useState(false);
   const [isActive, setActive] = useState(false);
   const [role] = useRole();
-  console.log(role);
-  console.log(toggle);
 
   //   For guest/host menu item toggle button
   const toggleHandler = (event) => {
@@ -63,8 +61,8 @@ const Sidebar = () => {
           {/* Nav Items */}
           <div className="flex flex-col justify-between flex-1 mt-6">
             {/* If a user is host */}
-            {role === 'host' && <ToggleBtn toggleHandler={toggleHandler} />}
-            
+            {role === "host" && <ToggleBtn toggleHandler={toggleHandler} />}
+
             <nav>
               <MenuItem
                 icon={BsGraphUp}
