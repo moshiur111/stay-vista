@@ -1,11 +1,11 @@
 import { Helmet } from "react-helmet-async";
-import AddRoomForm from "../../components/Form/AddRoomForm";
 import { useState } from "react";
-import { imageUpload } from "../../api/utils";
-import useAuth from "../../hooks/useAuth";
-import { addRoom } from "../../api/rooms";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import AddRoomForm from "../../../components/Form/AddRoomForm";
+import { addRoom } from "../../../api/rooms";
+import { imageUpload } from "../../../api/utils";
+import useAuth from "../../../hooks/useAuth";
 
 const AddRoom = () => {
   const navigate = useNavigate();

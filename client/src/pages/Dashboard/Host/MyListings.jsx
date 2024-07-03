@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import useAuth from "../../hooks/useAuth";
-import { getHostRooms } from "../../api/rooms";
-import RoomDataRow from "../../components/Dashboard/Sidebar/TableRows/RoomDataRow";
+import { getHostRooms } from "../../../api/rooms";
+import useAuth from "../../../hooks/useAuth";
+import RoomDataRow from "../../../components/Dashboard/Sidebar/TableRows/RoomDataRow";
 
 const MyListings = () => {
   const { user } = useAuth();

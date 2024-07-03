@@ -8,12 +8,14 @@ import RoomDetails from "../pages/RoomDetails/RoomDetails";
 import PrivateRoute from "./PrivateRoute";
 import { getRoom } from "../api/rooms";
 import DashboardLayout from "../layouts/DashboardLayout";
-import AddRoom from "../pages/Host/AddRoom";
-import MyListings from "../pages/Host/MyListings";
 import HostRoute from "./HostRoute";
 import AdminRoute from "./AdminRoute";
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import Profile from "../pages/Dashboard/Common/Profile";
+import MyBookings from "../pages/Dashboard/Guest/MyBookings";
+import ManageBookings from "../pages/Dashboard/Host/ManageBookings";
+import AddRoom from "../pages/Dashboard/Host/AddRoom";
+import MyListings from "../pages/Dashboard/Host/MyListings";
 
 export const router = createBrowserRouter([
   {
@@ -47,7 +49,7 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "addRoom",
+        path: "add-room",
         element: (
           <PrivateRoute>
             <HostRoute>
@@ -57,7 +59,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "myListings",
+        path: "my-listings",
         element: (
           <PrivateRoute>
             <HostRoute>
@@ -79,6 +81,14 @@ export const router = createBrowserRouter([
       {
         path: "profile", 
         element: <PrivateRoute><Profile></Profile></PrivateRoute>
+      }, 
+      {
+        path: "my-bookings", 
+        element: <PrivateRoute><MyBookings></MyBookings></PrivateRoute>
+      }, 
+      {
+        path: 'manage-bookings', 
+        element: <HostRoute><ManageBookings></ManageBookings></HostRoute>
       }
     ],
   },

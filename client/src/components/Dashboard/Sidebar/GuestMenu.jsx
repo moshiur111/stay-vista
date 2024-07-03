@@ -4,7 +4,7 @@ import MenuItem from "./MenuItem";
 const GuestMenu = () => {
   return (
     <div>
-      <MenuItem icon={BsFingerprint} label="My Bookings" address="myBookings" />
+      <MenuItem icon={BsFingerprint} label="My Bookings" address="my-bookings" />
     </div>
   );
 };
