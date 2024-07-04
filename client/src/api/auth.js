@@ -1,11 +1,17 @@
 import axiosSecure from ".";
 
+// Get all user
+export const getAllUsers = async () => {
+  const { data } = await axiosSecure("/users");
+  return data;
+};
+
 // Save user data in database
 export const saveUser = async (user) => {
   const currentUser = {
     email: user.email,
     role: "guest",
-    status: "verified",
+    status: "Verified",
   };
   const { data } = await axiosSecure.put(`/users/${user?.email}`, currentUser);
   return data;
@@ -30,7 +36,23 @@ export const getRole = async (email) => {
   return data.role;
 };
 
-export const getAllUsers = async () => {
-  const { data } = await axiosSecure("/users");
+// update role
+export const updateRole = async ({ email, role }) => {
+  const currentUser = {
+    email,
+    role,
+    status: "Verified",
+  };
+  const { data } = await axiosSecure.put(`/users/update/${email}`, currentUser);
+  return data;
+};
+
+// Become a Host
+export const becomeHost = async (email) => {
+  const currentUser = {
+    email,
+    status: "Requested",
+  };
+  const { data } = await axiosSecure.put(`/users/${email}`, currentUser);
   return data;
 };
